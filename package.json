@@ -1,5 +1,5 @@
 {
-  "name": "webpack-5.0-template",
+  "name": "pos_system",
   "version": "1.0.0",
   "description": "",
   "main": "public/main.js",
@@ -9,7 +9,7 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Brayden, Maria, Melaine, Noah",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.2.0",
