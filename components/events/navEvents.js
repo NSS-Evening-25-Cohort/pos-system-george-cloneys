@@ -3,12 +3,12 @@ import { showOrders } from '../../pages/order';
 import { signOut } from '../../utils/auth';
 
 // navigation events
-const navigationEvents = (user) => {
+const navigationEvents = () => {
   // LOGOUT BUTTON
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
   document.querySelector('#orders').addEventListener('click', () => {
-    getOrders(user.uid).then(showOrders);
+    getOrders().then(showOrders);
   });
 
   // STRETCH: SEARCH
