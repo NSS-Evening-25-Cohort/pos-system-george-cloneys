@@ -1,6 +1,9 @@
 import { getOrders, getSingleOrder, deleteOrder } from '../../api/orderData';
 import { showOrders } from '../../pages/order';
 import addOrderForm from '../forms/createOrder';
+import { getItem, getSingleItem, deleteItem } from '../../api/itemData';
+import { showItems } from '../../pages/item';
+import addItemForm from '../forms/addItemForm';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -34,12 +37,13 @@ const domEvents = () => {
     }
     // ADD CLICK EVENT FOR DELETE ITEM
     if (e.target.id.includes('delete-item-btn')) {
+      // eslint-disable-next-line no-alert
       if (window.confirm('Want to delete?')) {
-        console.warn('CLICKED DELETE ITEM', e.target.id);
         const [, firebaseKey] = e.target.id.split('--');
 
-        // deleteAuthorBooksRelationship(firebaseKey).then(() => {
-        getItem().then(showItems);
+        deleteItem(firebaseKey).then(() => {
+          getItem().then(showItems);
+        });
       }
     }
   });
