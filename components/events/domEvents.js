@@ -1,5 +1,5 @@
 import { getOrders, getSingleOrder, deleteOrder } from '../../api/orderData';
-import { showOrders } from '../../pages/vocab';
+import { showOrders } from '../../pages/order';
 import addVocabForm from '../forms/addWord';
 
 const domEvents = () => {
