@@ -3,12 +3,12 @@
 import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
-const emptyVocab = () => {
+const emptyOrder = () => {
   const domString = '<h1>No Vocab Yet!</h1>';
   renderToDOM('#store', domString);
 };
 
-const showVocab = (array) => {
+const showOrders = (array) => {
   clearDom();
 
   const btnString = '<button class="btn btn-primary btn-lg mb-4" id="add-vocab-btn">Add New Vocab</button>';
@@ -20,11 +20,13 @@ const showVocab = (array) => {
     domString += `
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">${item.word}</h5>
-        <h6 class="card-title">Category: ${item.vocab_type}</h6>
-        <p>${item.definition}</p>
-        <i class="btn btn-primary" id="edit-vocab-btn--${item.firebaseKey}">Edit Vocab</i>
-        <i class="btn btn-danger" id="delete-vocab-btn--${item.firebaseKey}">Delete Vocab</i>
+        <h5 class="card-title">${item.name}</h5>
+        <h5 class="card-title">${item.orderStatus}</h5>
+        <h6 class="card-title">${item.phoneNumber}</h6>
+        <h6 class="card-title">${item.email}</h6>
+        <h6 class="card-title">${item.orderType}</h6>
+        <i class="btn btn-primary" id="edit-order-btn--${item.firebaseKey}">Edit Order</i>
+        <i class="btn btn-danger" id="delete-order-btn--${item.firebaseKey}">Delete Order</i>
       </div>
     </div>
     `;
@@ -32,4 +34,4 @@ const showVocab = (array) => {
   renderToDOM('#store', domString);
 };
 
-export { showVocab, emptyVocab };
+export { showOrders, emptyOrder };
