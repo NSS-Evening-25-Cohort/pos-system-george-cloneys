@@ -1,40 +1,37 @@
-import { createVocab, getVocab, updateVocab } from '../../api/vocabData';
-import { showVocab } from '../../pages/vocab';
-import formattedDate from '../../utils/timestamp';
+import { getOrders, createOrder, editOrder } from '../../api/orderData';
+import { showOrders } from '../../pages/order';
 
-const formEvents = (user) => {
+const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
-    if (e.target.id.includes('submit-vocab')) {
+    if (e.target.id.includes('submit-order')) {
       const payload = {
-        word: document.querySelector('#word').value,
-        definition: document.querySelector('#definition').value,
-        posted_by: document.querySelector('#posted_by').value,
-        vocab_type: document.querySelector('input[name="flexRadioDefault"]:checked').value,
-        time_submitted: formattedDate,
-        uid: user.uid
+        orderName: document.querySelector('#orderName').value,
+        phoneNumber: document.querySelector('#phoneNumber').value,
+        email: document.querySelector('#email').value,
+        order_type: document.querySelector('input[name="flexRadioDefault"]:checked').value,
       };
-      createVocab(payload).then(({ name }) => {
+      createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
-        updateVocab(patchPayload).then(() => {
-          getVocab(user.uid).then(showVocab);
+        editOrder(patchPayload).then(() => {
+          getOrders().then(showOrders);
         });
       });
     }
 
-    if (e.target.id.includes('update-vocab')) {
+    if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
-        word: document.querySelector('#word').value,
-        definition: document.querySelector('#definition').value,
-        posted_by: document.querySelector('#posted_by').value,
-        vocab_type: document.querySelector('input[name="flexRadioDefault"]:checked').value,
+        orderName: document.querySelector('#orderName').value,
+        phoneNumber: document.querySelector('#phoneNumber').value,
+        email: document.querySelector('#email').value,
+        order_type: document.querySelector('input[name="flexRadioDefault"]:checked').value,
         firebaseKey,
       };
 
-      updateVocab(payload).then(() => {
-        getVocab(user.uid).then(showVocab);
+      editOrder(payload).then(() => {
+        getOrders().then(showOrders);
       });
     }
   });

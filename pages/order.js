@@ -20,7 +20,7 @@ const showOrders = (array) => {
     domString += `
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">${item.name}</h5>
+        <h5 class="card-title">${item.orderName}</h5>
         <h5 class="card-title">${item.orderStatus}</h5>
         <h6 class="card-title">${item.phoneNumber}</h6>
         <h6 class="card-title">${item.email}</h6>
