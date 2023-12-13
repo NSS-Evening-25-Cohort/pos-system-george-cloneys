@@ -24,7 +24,24 @@ const domEvents = () => {
 
       getSingleOrder(firebaseKey).then((orderObj) => addOrderForm(orderObj));
     }
+
+    // DOM EVENTS FOR ITEMS
+    // ADD CLICK EVENT FOR EDIT/UPDATE ITEM
+    if (e.target.id.includes('update-item-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
+    }
+    // ADD CLICK EVENT FOR DELETE ITEM
+    if (e.target.id.includes('delete-item-btn')) {
+      if (window.confirm('Want to delete?')) {
+        console.warn('CLICKED DELETE ITEM', e.target.id);
+        const [, firebaseKey] = e.target.id.split('--');
+
+        // deleteAuthorBooksRelationship(firebaseKey).then(() => {
+        getItem().then(showItems);
+      }
+    }
   });
 };
-
 export default domEvents;
