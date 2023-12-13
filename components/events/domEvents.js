@@ -1,4 +1,7 @@
+import { getItem, getSingleItem } from '../../api/itemData';
+import addItemForm from
 import { getOrders, getSingleOrder, deleteOrder } from '../../api/orderData';
+import { showItems } from '../../pages/item';
 import { showOrders } from '../../pages/vocab';
 import addVocabForm from '../forms/addWord';
 
@@ -27,8 +30,21 @@ const domEvents = () => {
 
     //DOM EVENTS FOR ITEMS
     // ADD CLICK EVENT FOR EDIT/UPDATE ITEM
+    if (e.target.id.includes('update-item-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
+    }
     // ADD CLICK EVENT FOR DELETE ITEM
-    // ADD CLICK EVENT FOR ADD/SUBMIT ITEM
+    if (e.target.id.includes('delete-item-btn')) {
+      if (window.confirm('Want to delete?')) {
+        console.warn('CLICKED DELETE ITEM', e.target.id);
+        const [, firebaseKey] = e.target.id.split('--');
+
+        // deleteAuthorBooksRelationship(firebaseKey).then(() => {
+          getItem().then(showItems);
+        });
+      }
   });
 };
 
