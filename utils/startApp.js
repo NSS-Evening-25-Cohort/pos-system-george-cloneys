@@ -4,8 +4,8 @@ import domEvents from '../components/events/domEvents';
 import navigationEvents from '../components/events/navEvents';
 import domBuilder from '../components/shared/domBuilder';
 import formEvents from '../components/events/formEvents';
-import { getVocab } from '../api/vocabData';
-import { showVocab } from '../pages/vocab';
+import { getOrders } from '../api/orderData';
+import { showOrders } from '../pages/order';
 
 const startApp = () => {
   domBuilder(); // BUILD THE DOM
@@ -15,7 +15,7 @@ const startApp = () => {
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
   navigationEvents(); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
 
-  getVocab().then((vocab) => showVocab(vocab));
+  getOrders().then((order) => showOrders(order));
 };
 
 export default startApp;
