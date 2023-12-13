@@ -24,6 +24,11 @@ const domEvents = () => {
 
       getSingleOrder(firebaseKey).then((orderObj) => addVocabForm(orderObj));
     }
+
+    //DOM EVENTS FOR ITEMS
+    // ADD CLICK EVENT FOR EDIT/UPDATE ITEM
+    // ADD CLICK EVENT FOR DELETE ITEM
+    // ADD CLICK EVENT FOR ADD/SUBMIT ITEM
   });
 };
 
