@@ -1,5 +1,5 @@
-import { filterLanguage, filterTech, getVocab } from '../../api/vocabData';
-import { showVocab } from '../../pages/vocab';
+import { getOrders } from '../../api/orderData';
+import { showOrders } from '../../pages/order';
 import { signOut } from '../../utils/auth';
 
 // navigation events
@@ -7,17 +7,10 @@ const navigationEvents = (user) => {
   // LOGOUT BUTTON
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
-  document.querySelector('#vocab').addEventListener('click', () => {
-    getVocab(user.uid).then(showVocab);
+  document.querySelector('#orders').addEventListener('click', () => {
+    getOrders(user.uid).then(showOrders);
   });
 
-  document.querySelector('#Tech').addEventListener('click', () => {
-    filterTech(user.uid).then(showVocab);
-  });
-
-  document.querySelector('#Language').addEventListener('click', () => {
-    filterLanguage(user.uid).then(showVocab);
-  });
   // STRETCH: SEARCH
   // document.querySelector('#search').addEventListener('keyup', (e) => {
   //   const searchValue = document.querySelector('#search').value.toLowerCase();

@@ -1,6 +1,6 @@
 import { getOrders, getSingleOrder, deleteOrder } from '../../api/orderData';
 import { showOrders } from '../../pages/order';
-import addVocabForm from '../forms/addWord';
+import addOrderForm from '../forms/createOrder';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -22,7 +22,7 @@ const domEvents = () => {
     if (e.target.id.includes('edit-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
 
-      getSingleOrder(firebaseKey).then((orderObj) => addVocabForm(orderObj));
+      getSingleOrder(firebaseKey).then((orderObj) => addOrderForm(orderObj));
     }
   });
 };
