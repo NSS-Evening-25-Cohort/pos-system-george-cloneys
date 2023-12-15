@@ -1,6 +1,8 @@
 import { getOrders } from '../../api/orderData';
+import { showItems } from '../../pages/item';
 import { showOrders } from '../../pages/order';
 import { signOut } from '../../utils/auth';
+import { getItem } from '../../api/itemData';
 
 // navigation events
 const navigationEvents = () => {
@@ -16,16 +18,9 @@ const navigationEvents = () => {
     console.warn('CLICKED CREATE ORDER BUTTON');
   });
 
-  // STRETCH: SEARCH
-  // document.querySelector('#search').addEventListener('keyup', (e) => {
-  //   const searchValue = document.querySelector('#search').value.toLowerCase();
-  //   console.warn(searchValue);
-
-  //   // WHEN THE USER PRESSES ENTER, MAKE THE API CALL AND CLEAR THE INPUT
-  //   if (e.keyCode === 13) {
-  //     document.querySelector('#search').value = '';
-  //   }
-  // });
+  document.querySelector('#order-details-btn').addEventListener('click', () => {
+    getItem().then(showItems);
+  });
 };
 
 export default navigationEvents;
