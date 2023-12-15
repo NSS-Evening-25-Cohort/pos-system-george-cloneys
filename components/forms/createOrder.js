@@ -17,7 +17,7 @@ const addOrderForm = (obj = {}) => {
         <label for="text">Posted By</label>
         <input type="text" class="form-control" id="email" value="${obj.email || ''}"npm syar required>
       </div>
-      <div>Vocab Type</div>
+      <div>Order Type</div>
       <div class="form-check">
          <input class="form-check-input" type="radio" name="flexRadioDefault" value="Walk-in" id="walkIn">
           <label class="form-check-label" for="flexRadioDefault1">

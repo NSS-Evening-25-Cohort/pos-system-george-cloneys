@@ -8,7 +8,12 @@ const navigationEvents = () => {
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
   document.querySelector('#orders').addEventListener('click', () => {
+    console.warn('CLICKED ORDER BUTTON');
     getOrders().then(showOrders);
+  });
+
+  document.querySelector('#add-button').addEventListener('click', () => {
+    console.warn('CLICKED CREATE ORDER BUTTON');
   });
 
   // STRETCH: SEARCH
