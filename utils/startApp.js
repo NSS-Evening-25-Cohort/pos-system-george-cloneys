@@ -4,8 +4,9 @@ import domEvents from '../components/events/domEvents';
 import navigationEvents from '../components/events/navEvents';
 import domBuilder from '../components/shared/domBuilder';
 import formEvents from '../components/events/formEvents';
-import { getOrders } from '../api/orderData';
-import { showOrders } from '../pages/order';
+// import { getOrders } from '../api/orderData';
+// import { showOrders } from '../pages/order';
+import homePage from '../pages/homePage';
 
 const startApp = () => {
   domBuilder(); // BUILD THE DOM
@@ -14,8 +15,9 @@ const startApp = () => {
   navBar(); // DYNAMICALLY ADD THE NAV
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
   navigationEvents(); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
+  homePage();// shows home page after logging in
 
-  getOrders().then((order) => showOrders(order));
+  // getOrders().then((order) => showOrders(order));
 };
 
 export default startApp;
