@@ -4,14 +4,14 @@ import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
 const emptyOrder = () => {
-  const domString = '<h1>No Vocab Yet!</h1>';
+  const domString = '<h1>No Orders Yet!</h1>';
   renderToDOM('#store', domString);
 };
 
 const showOrders = (array) => {
   clearDom();
 
-  const btnString = '<button class="btn btn-primary btn-lg mb-4" id="add-vocab-btn">Add New Vocab</button>';
+  const btnString = '<button class="btn btn-primary btn-lg mb-4" id="add-order-btn">Add New Order</button>';
 
   renderToDOM('#add-button', btnString);
 
