@@ -1,4 +1,5 @@
 const clearDom = () => {
+  document.querySelector('#login-container').innerHTML = '';
   document.querySelector('#homeContainer').innerHTML = '';
   document.querySelector('#store').innerHTML = '';
   document.querySelector('#add-button').innerHTML = '';
