@@ -21,10 +21,11 @@ const showOrders = (array) => {
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">${item.orderName}</h5>
-        <h5 class="card-title">${item.orderStatus}</h5>
         <h6 class="card-title">${item.phoneNumber}</h6>
         <h6 class="card-title">${item.email}</h6>
-        <h6 class="card-title">${item.orderType}</h6>
+        <h6 class="card-title">${item.order_type}</h6>
+        <h6 class="card-title">${item.orderStatus}</h6>
+        <i class="btn btn-primary" id="order-details-btn--${item.firebaseKey}">Details</i>
         <i class="btn btn-primary" id="edit-order-btn--${item.firebaseKey}">Edit Order</i>
         <i class="btn btn-danger" id="delete-order-btn--${item.firebaseKey}">Delete Order</i>
       </div>

@@ -6,15 +6,15 @@ const addOrderForm = (obj = {}) => {
   const domString = `
     <form id="${obj.firebaseKey ? `edit-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
       <div class="form-group">
-        <label for="title">New Order</label>
+        <label for="title">Name for Order</label>
         <input type="text" class="form-control" id="orderName" value="${obj.orderName || ''}" required>
       </div>
       <div class="form-group">
-        <label for="text">Definition</label>
+        <label for="text">Phone Number</label>
         <input type="text" class="form-control" id="phoneNumber" value="${obj.phoneNumber || ''}" required>
       </div>
       <div class="form-group">
-        <label for="text">Posted By</label>
+        <label for="text">Email</label>
         <input type="text" class="form-control" id="email" value="${obj.email || ''}"npm syar required>
       </div>
       <div>Order Type</div>
