@@ -19,6 +19,15 @@ const domEvents = () => {
         });
       }
     }
+    // CLICK EVENT FOR VIEW-ORDERS-BTN1
+    if (e.target.id.includes('view-orders-btn1')) {
+      getOrders().then(showOrders);
+    }
+
+    // CLICK EVENT FOR create-orders-btn2
+    if (e.target.id.includes('create-orders-btn2')) {
+      addOrderForm();
+    }
 
     if (e.target.id.includes('add-order-btn')) {
       addOrderForm();
