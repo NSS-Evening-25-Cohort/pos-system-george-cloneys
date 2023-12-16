@@ -17,10 +17,6 @@ const navEvents = () => {
   document.querySelector('#add-button').addEventListener('click', () => {
     console.warn('CLICKED CREATE ORDER BUTTON');
   });
-
-  // document.querySelector('#order-details-btn').addEventListener('click', () => {
-  //   getItem().then(showItems);
-  // });
 };
 
 export default navEvents;

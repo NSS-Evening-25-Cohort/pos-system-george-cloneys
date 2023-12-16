@@ -1,12 +1,14 @@
-// for merged promises
-// import { getSingleOrder } from './orderData';
-// import { getSingleItem } from './itemData';
+import { deleteItem } from './itemData';
+import { getOrderItems, deleteSingleOrder } from './orderData';
 
-// const getOrderDetails = (firebaseKey) => new Promise((resolve, reject) => {
-//   getSingleItem(firebaseKey).then((itemObject) => {
-//     getSingleOrder(itemObject.order_id)
-//       .then((orderObject) => resolve({ ...itemObject, orderObject }));
-//   }).catch(reject);
-// });
+const deleteOrderWithItems = (firebaseKey) => new Promise((resolve, reject) => {
+  getOrderItems(firebaseKey).then((orderItemsArray) => {
+    const deleteItemsPromises = orderItemsArray.map((items) => deleteItem(items.firebaseKey));
 
-// export default getOrderDetails;
+    Promise.all(deleteItemsPromises).then(() => {
+      deleteSingleOrder(firebaseKey).then(resolve);
+    });
+  }).catch(reject);
+});
+
+export default deleteOrderWithItems;

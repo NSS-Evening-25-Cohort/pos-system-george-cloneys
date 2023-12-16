@@ -1,5 +1,5 @@
 import {
-  getOrders, getSingleOrder, deleteOrder, getOrderItems
+  getOrders, getSingleOrder, deleteSingleOrder, getOrderItems
 } from '../../api/orderData';
 import { showOrders } from '../../pages/order';
 import addOrderForm from '../forms/createOrder';
@@ -14,7 +14,7 @@ const domEvents = () => {
       if (window.confirm('Want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteOrder(firebaseKey).then(() => {
+        deleteSingleOrder(firebaseKey).then(() => {
           getOrders().then(showOrders);
         });
       }
