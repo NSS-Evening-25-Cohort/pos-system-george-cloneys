@@ -1,4 +1,6 @@
-import { getOrders, getSingleOrder, deleteOrder } from '../../api/orderData';
+import {
+  getOrders, getSingleOrder, deleteOrder, getOrderItems
+} from '../../api/orderData';
 import { showOrders } from '../../pages/order';
 import addOrderForm from '../forms/createOrder';
 import { getItem, getSingleItem, deleteItem } from '../../api/itemData';
@@ -45,6 +47,10 @@ const domEvents = () => {
           getItem().then(showItems);
         });
       }
+    }
+    if (e.target.id.includes('order-details-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getOrderItems(firebaseKey).then(showItems);
     }
   });
 };
