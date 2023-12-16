@@ -7,11 +7,11 @@ const addItemForm = (obj = {}) => {
     <form id="${obj.firebaseKey ? `edit-item--${obj.firebaseKey}` : 'submit-item'}" class="mb-4">
       <div class="form-group">
         <label for="title">New Item</label>
-        <input type="text" class="form-control" id="items-name" value="${obj.name || ''}" required>
+        <input type="text" class="form-control" id="items-name" value="${obj.item_name || ''}" required>
       </div>
       <div class="form-group">
         <label for="text">Definition</label>
-        <input type="text" class="form-control" id="items-price" value="${obj.price || ''}" required>
+        <input type="text" class="form-control" id="items-price" value="${obj.item_price || ''}" required>
       </div>
     
       <button type="submit" class="btn btn-primary mt-3">Add/Edit Item</button>

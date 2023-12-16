@@ -1,4 +1,6 @@
+import { getItem } from '../../api/itemData';
 import { getOrders } from '../../api/orderData';
+import { showItems } from '../../pages/orderDetails';
 import { showOrders } from '../../pages/viewOrders';
 import { signOut } from '../../utils/auth';
 // import { getItem } from '../../api/itemData';
@@ -17,9 +19,9 @@ const navEvents = () => {
     console.warn('CLICKED CREATE ORDER BUTTON');
   });
 
-  // document.querySelector('#order-details-btn').addEventListener('click', () => {
-  //   getItem().then(showItems);
-  // });
+  document.querySelector('#order-details-btn').addEventListener('click', () => {
+    getItem().then(showItems);
+  });
 };
 
 export default navEvents;

@@ -4,14 +4,9 @@ import domEvents from '../components/events/domEvents';
 import navEvents from '../components/events/navEvents';
 import domBuilder from '../components/shared/domBuilder';
 import formEvents from '../components/events/formEvents';
-<<<<<<< HEAD
-import { getOrders } from '../api/orderData';
-import { showOrders } from '../pages/viewOrders';
-=======
 // import { getOrders } from '../api/orderData';
 // import { showOrders } from '../pages/order';
 import homePage from '../pages/homePage';
->>>>>>> main
 
 const startApp = () => {
   domBuilder(); // BUILD THE DOM
