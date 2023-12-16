@@ -1,10 +1,11 @@
-import { getOrders, getSingleOrder, deleteOrder } from '../../api/orderData';
+import {
+  getOrders, getSingleOrder, deleteOrder, getOrderItems
+} from '../../api/orderData';
 import { showOrders } from '../../pages/order';
 import addOrderForm from '../forms/createOrder';
 import { getItem, getSingleItem, deleteItem } from '../../api/itemData';
 import { showItems } from '../../pages/item';
 import addItemForm from '../forms/addItemForm';
-import getOrderDetails from '../../api/mergedData';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -49,7 +50,7 @@ const domEvents = () => {
     }
     if (e.target.id.includes('order-details-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      getOrderDetails(firebaseKey).then(showItems);
+      getOrderItems(firebaseKey).then(showItems);
     }
   });
 };
