@@ -1,11 +1,11 @@
 import {
   getOrders, getSingleOrder, deleteOrder, getOrderItems
 } from '../../api/orderData';
-import { showOrders } from '../../pages/order';
 import addOrderForm from '../forms/createOrder';
-import { getItem, getSingleItem, deleteItem } from '../../api/itemData';
-import { showItems } from '../../pages/item';
+import { getItem, getSingleItem, deleteSingleItem } from '../../api/itemData';
+import { showItems } from '../../pages/orderDetails';
 import addItemForm from '../forms/addItemForm';
+import { showOrders } from '../../pages/viewOrders';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -41,7 +41,7 @@ const domEvents = () => {
 
     // DOM EVENTS FOR ITEMS
     // ADD CLICK EVENT FOR EDIT/UPDATE ITEM
-    if (e.target.id.includes('update-item-btn')) {
+    if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
 
       getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
@@ -52,7 +52,7 @@ const domEvents = () => {
       if (window.confirm('Want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteItem(firebaseKey).then(() => {
+        deleteSingleItem(firebaseKey).then(() => {
           getItem().then(showItems);
         });
       }
