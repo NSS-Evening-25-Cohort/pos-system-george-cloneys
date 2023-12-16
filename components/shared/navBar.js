@@ -1,6 +1,8 @@
 import renderToDOM from '../../utils/renderToDom';
+import clearDom from '../../utils/clearDom';
 
 const navBar = () => {
+  clearDom();
   const domString = `
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark mb-5">
     <div class="container-fluid">

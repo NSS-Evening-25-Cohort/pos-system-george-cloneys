@@ -1,11 +1,11 @@
 import { getOrders } from '../../api/orderData';
-import { showItems } from '../../pages/item';
+// import { showItems } from '../../pages/item';
 import { showOrders } from '../../pages/order';
 import { signOut } from '../../utils/auth';
-import { getItem } from '../../api/itemData';
+// import { getItem } from '../../api/itemData';
 
 // navigation events
-const navigationEvents = () => {
+const navEvents = () => {
   // LOGOUT BUTTON
   document.querySelector('#logout-button').addEventListener('click', signOut);
 
@@ -18,9 +18,9 @@ const navigationEvents = () => {
     console.warn('CLICKED CREATE ORDER BUTTON');
   });
 
-  document.querySelector('#order-details-btn').addEventListener('click', () => {
-    getItem().then(showItems);
-  });
+  // document.querySelector('#order-details-btn').addEventListener('click', () => {
+  //   getItem().then(showItems);
+  // });
 };
 
-export default navigationEvents;
+export default navEvents;
