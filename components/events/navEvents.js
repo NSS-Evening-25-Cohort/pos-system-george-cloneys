@@ -1,5 +1,5 @@
 import { getOrders } from '../../api/orderData';
-import { showOrders } from '../../pages/order';
+import { showOrders } from '../../pages/viewOrders';
 import { signOut } from '../../utils/auth';
 
 // navigation events

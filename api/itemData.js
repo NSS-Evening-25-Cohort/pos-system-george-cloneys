@@ -48,7 +48,7 @@ const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 // DELETE ITEM
-const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
@@ -78,6 +78,6 @@ export {
   getItem,
   createItem,
   getSingleItem,
-  deleteItem,
+  deleteSingleItem,
   updateItem,
 };

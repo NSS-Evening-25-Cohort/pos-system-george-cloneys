@@ -1,5 +1,5 @@
 import { getOrders, createOrder, editOrder } from '../../api/orderData';
-import { showOrders } from '../../pages/order';
+import { showOrders } from '../../pages/viewOrders';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {

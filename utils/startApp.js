@@ -5,7 +5,7 @@ import navigationEvents from '../components/events/navEvents';
 import domBuilder from '../components/shared/domBuilder';
 import formEvents from '../components/events/formEvents';
 import { getOrders } from '../api/orderData';
-import { showOrders } from '../pages/order';
+import { showOrders } from '../pages/viewOrders';
 
 const startApp = () => {
   domBuilder(); // BUILD THE DOM
