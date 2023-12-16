@@ -4,6 +4,7 @@ import addOrderForm from '../forms/createOrder';
 import { getItem, getSingleItem, deleteItem } from '../../api/itemData';
 import { showItems } from '../../pages/item';
 import addItemForm from '../forms/addItemForm';
+import getOrderDetails from '../../api/mergedData';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -45,6 +46,10 @@ const domEvents = () => {
           getItem().then(showItems);
         });
       }
+    }
+    if (e.target.id.includes('order-details-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getOrderDetails(firebaseKey).then(showItems);
     }
   });
 };
