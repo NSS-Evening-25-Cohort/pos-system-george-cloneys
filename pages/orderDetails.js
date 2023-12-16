@@ -13,7 +13,7 @@ const showItems = (array) => {
 
   const btnString = '<button class="btn btn-primary btn-lg mb-4" id="add-item-btn">Add New Item</button>';
 
-  renderToDOM('#add-item-button-div', btnString);
+  renderToDOM('#add-button', btnString);
 
   let domString = '';
   array.forEach((item) => {

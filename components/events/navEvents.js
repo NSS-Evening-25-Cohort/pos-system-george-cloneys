@@ -1,6 +1,7 @@
+import { getItem } from '../../api/itemData';
 import { getOrders } from '../../api/orderData';
-// import { showItems } from '../../pages/item';
-import { showOrders } from '../../pages/order';
+import { showItems } from '../../pages/orderDetails';
+import { showOrders } from '../../pages/viewOrders';
 import { signOut } from '../../utils/auth';
 // import { getItem } from '../../api/itemData';
 
