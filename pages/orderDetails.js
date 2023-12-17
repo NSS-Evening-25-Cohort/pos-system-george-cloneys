@@ -8,12 +8,12 @@ const emptyItem = () => {
   renderToDOM('#store', domString);
 };
 
-const showItems = (array) => {
+const showItems = (array, orderId) => {
   clearDom();
 
-  const btnString = '<button class="btn btn-primary btn-lg mb-4" id="add-item-btn">Add New Item</button>';
+  const btnString = `<button class="btn btn-primary btn-lg mb-4" id="add-item-btn--${orderId}">Add New Item</button>`;
 
-  renderToDOM('#add-button', btnString);
+  renderToDOM('#add-item-button', btnString);
 
   let domString = '';
   array.forEach((item) => {

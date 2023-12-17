@@ -1,16 +1,16 @@
 import clearDom from '../../utils/clearDom';
 import renderToDOM from '../../utils/renderToDom';
 
-const addItemForm = (obj = {}) => {
+const addItemForm = (obj = {}, orderId) => {
   clearDom();
   const domString = `
-    <form id="${obj.firebaseKey ? `edit-item--${obj.firebaseKey}` : 'submit-item'}" class="mb-4">
+    <form id="${obj && obj.firebaseKey ? `edit-item-form--${obj.firebaseKey}--${orderId}` : `add-item-form--${orderId}`}" class="mb-4">
       <div class="form-group">
-        <label for="title">New Item</label>
+        <label for="title">Item Name</label>
         <input type="text" class="form-control" id="items-name" value="${obj.item_name || ''}" required>
       </div>
       <div class="form-group">
-        <label for="text">Definition</label>
+        <label for="text">Item Price</label>
         <input type="text" class="form-control" id="items-price" value="${obj.item_price || ''}" required>
       </div>
     
