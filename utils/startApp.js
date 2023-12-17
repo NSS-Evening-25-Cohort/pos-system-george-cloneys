@@ -16,7 +16,6 @@ const startApp = () => {
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
   navEvents(); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
   homePage();// shows home page after logging in
-
   // getOrders().then((order) => showOrders(order));
 };
 
