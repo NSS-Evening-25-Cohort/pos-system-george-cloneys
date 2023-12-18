@@ -15,6 +15,10 @@ const showItems = (array, orderId) => {
 
   renderToDOM('#add-item-button', btnString);
 
+  // const payString = `<button class="btn btn-primary btn-lg mb-4" id="close-order-btn--${orderId}">Add New Item</button>`;
+
+  // renderToDOM('#payment', payString);
+
   let domString = '';
   array.forEach((item) => {
     domString += `
@@ -26,10 +30,14 @@ const showItems = (array, orderId) => {
         <i class="btn btn-danger" id="delete-item-btn--${item.firebaseKey}">Delete Item</i>
       </div>
     </div>
-    <div>
-    <button class="btn btn-primary btn-lg mb-4" id="payment-btn--${orderId}">Go To Payment</button>;</div>
     `;
   });
+  let domString2 = '';
+  domString2 = `<div> 
+  <button class="btn btn-primary btn-lg mb-4" id="close-order-btn--${orderId}">Close Order</button>
+  </div>`;
+
+  domString += domString2;
   renderToDOM('#store', domString);
 };
 
