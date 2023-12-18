@@ -4,10 +4,13 @@ import clearDom from '../utils/clearDom';
 const homePage = () => {
   clearDom();
   const domString = `
-  <h2>Welcome :D!</h2>
-  <button type="button" id="view-orders-btn1" class="btn btn-success">View Orders</button>
-  <button type="button" id="create-orders-btn2" class="btn btn-info">Create an Order</button>
-  <button type="button" id="view-revenue-btn3" class="btn btn-warning">View Revenue</button>
+  <div class = welcomeContainer>
+  <h2 style="color: white; margin-top: 50px; margin-bottom: 200px;">Welcome :D!</h2>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+  <button type="button" id="view-orders-btn1" class="btn btn-success" style="width: 250px; margin-bottom: 10px;">View Orders</button>
+  <button type="button" id="create-orders-btn2" class="btn btn-info" style="width: 250px; margin-bottom: 10px;">Create an Order</button>
+  <button type="button" id="view-revenue-btn3" class="btn btn-warning"style="width: 250px; margin-bottom: 10px;">View Revenue</button>
+  </div>
 `;
   renderToDOM('#homeContainer', domString);
   // homeContainer subject to change
