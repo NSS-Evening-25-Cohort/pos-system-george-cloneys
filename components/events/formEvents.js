@@ -1,5 +1,7 @@
-import { createItem, getItem, updateItem } from '../../api/itemData';
-import { getOrders, createOrder, editOrder } from '../../api/orderData';
+import { createItem, updateItem } from '../../api/itemData';
+import {
+  getOrders, createOrder, editOrder, getOrderItems
+} from '../../api/orderData';
 import { showOrders } from '../../pages/viewOrders';
 import { showItems } from '../../pages/orderDetails';
 
@@ -37,31 +39,32 @@ const formEvents = () => {
       });
     }
 
-    if (e.target.id.includes('submit-item')) {
+    if (e.target.id.includes('add-item')) {
+      const [, orderId] = e.target.id.split('--');
       const payload = {
         item_name: document.querySelector('#items-name').value,
-        item_price: document.querySelector('#items-price').value
+        item_price: document.querySelector('#items-price').value,
+        order_id: orderId
       };
       createItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
 
         updateItem(patchPayload).then(() => {
-          getItem().then(showItems);
+          getOrderItems(orderId).then((items) => showItems(items, orderId));
         });
       });
     }
 
-    if (e.target.id.includes('edit-item')) {
-      console.warn('edit item clicked');
-      const [, firebaseKey] = e.target.id.split('--');
+    if (e.target.id.includes('edit-item-form')) {
+      const [, itemId, orderId] = e.target.id.split('--');
       const payload = {
         item_name: document.querySelector('#items-name').value,
         item_price: document.querySelector('#items-price').value,
-        firebaseKey
+        firebaseKey: itemId
       };
 
       updateItem(payload).then(() => {
-        getItem().then(showItems);
+        getOrderItems(orderId).then((items) => showItems(items, orderId));
       });
     }
   });

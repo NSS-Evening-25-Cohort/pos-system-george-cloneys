@@ -7,8 +7,9 @@ const domBuilder = () => {
   <div id="navigation"></div>
   <div id="homeContainer"></div>
     <div id="add-button"></div>
-    <div id="add-item-button-div"></div>
-    <div id="form-container"></div>
+    <div id="form-container">
+    </div>
+    <div id="add-item-button"></div>
     <div id="store"></div>
     <div id="revenueContainer"></div>
     <div id="view"></div>

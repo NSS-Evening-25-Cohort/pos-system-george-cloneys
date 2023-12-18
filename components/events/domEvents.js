@@ -45,12 +45,17 @@ const domEvents = () => {
       getSingleOrder(firebaseKey).then((orderObj) => addOrderForm(orderObj));
     }
 
+    if (e.target.id.includes('add-item-btn')) {
+      const [, orderId] = e.target.id.split('--');
+      // clearDom();
+      addItemForm({}, orderId);
+    }
+
     // DOM EVENTS FOR ITEMS
     // ADD CLICK EVENT FOR EDIT/UPDATE ITEM
     if (e.target.id.includes('edit-item-btn')) {
-      const [, firebaseKey] = e.target.id.split('--');
-
-      getSingleItem(firebaseKey).then((itemObj) => addItemForm(itemObj));
+      const [, itemId] = e.target.id.split('--');
+      getSingleItem(itemId).then((itemObj) => addItemForm(itemObj, itemObj.order_id));
     }
     // ADD CLICK EVENT FOR DELETE ITEM
     if (e.target.id.includes('delete-item-btn')) {
@@ -64,8 +69,8 @@ const domEvents = () => {
       }
     }
     if (e.target.id.includes('order-details-btn')) {
-      const [, firebaseKey] = e.target.id.split('--');
-      getOrderItems(firebaseKey).then(showItems);
+      const [, orderId] = e.target.id.split('--');
+      getOrderItems(orderId).then((items) => showItems(items, orderId));
     }
   });
 };
