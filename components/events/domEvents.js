@@ -1,11 +1,12 @@
 import {
-  getOrders, getSingleOrder, deleteSingleOrder, getOrderItems
+  getOrders, getSingleOrder, getOrderItems
 } from '../../api/orderData';
 import addOrderForm from '../forms/createOrder';
-import { getItem, getSingleItem, deleteSingleItem } from '../../api/itemData';
+import { getSingleItem, getItem, deleteSingleItem } from '../../api/itemData';
 import { showItems } from '../../pages/orderDetails';
 import addItemForm from '../forms/addItemForm';
 import { showOrders } from '../../pages/viewOrders';
+import deleteOrderWithItems from '../../api/mergedData';
 import revenuePage from '../../pages/revenue';
 
 const domEvents = () => {
@@ -15,7 +16,7 @@ const domEvents = () => {
       if (window.confirm('Want to delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
 
-        deleteSingleOrder(firebaseKey).then(() => {
+        deleteOrderWithItems(firebaseKey).then(() => {
           getOrders().then(showOrders);
         });
       }
