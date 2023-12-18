@@ -6,7 +6,6 @@ const clearDom = () => {
   document.querySelector('#form-container').innerHTML = '';
   document.querySelector('#view').innerHTML = '';
   document.querySelector('#add-item-button').innerHTML = '';
-  // document.querySelector('#revenueContainer').innerHTML = '';
 };
 
 export default clearDom;
