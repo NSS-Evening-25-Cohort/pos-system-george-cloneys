@@ -9,6 +9,7 @@ import { showOrders } from '../../pages/viewOrders';
 import deleteOrderWithItems from '../../api/mergedData';
 import revenuePage from '../../pages/revenue';
 import homePage from '../../pages/homePage';
+import closeOrderForm from '../forms/closeOrderForm';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -42,6 +43,10 @@ const domEvents = () => {
 
     if (e.target.id.includes('add-order-btn')) {
       addOrderForm();
+    }
+
+    if (e.target.id.includes('close-order-btn')) {
+      closeOrderForm();
     }
 
     if (e.target.id.includes('edit-order-btn')) {
