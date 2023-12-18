@@ -6,6 +6,7 @@ import { getItem, getSingleItem, deleteSingleItem } from '../../api/itemData';
 import { showItems } from '../../pages/orderDetails';
 import addItemForm from '../forms/addItemForm';
 import { showOrders } from '../../pages/viewOrders';
+import revenuePage from '../../pages/revenue';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -27,6 +28,11 @@ const domEvents = () => {
     // CLICK EVENT FOR create-orders-btn2
     if (e.target.id.includes('create-orders-btn2')) {
       addOrderForm();
+    }
+
+    // CLICK EVENT FOR view-revenue-btn3
+    if (e.target.id.includes('view-revenue-btn3')) {
+      revenuePage();
     }
 
     if (e.target.id.includes('add-order-btn')) {
