@@ -8,6 +8,7 @@ import addItemForm from '../forms/addItemForm';
 import { showOrders } from '../../pages/viewOrders';
 import deleteOrderWithItems from '../../api/mergedData';
 import revenuePage from '../../pages/revenue';
+import homePage from '../../pages/homePage';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -34,6 +35,9 @@ const domEvents = () => {
     // CLICK EVENT FOR view-revenue-btn3
     if (e.target.id.includes('view-revenue-btn3')) {
       revenuePage();
+    }
+    if (e.target.id.includes('home')) {
+      homePage();
     }
 
     if (e.target.id.includes('add-order-btn')) {

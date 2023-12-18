@@ -26,6 +26,8 @@ const showItems = (array, orderId) => {
         <i class="btn btn-danger" id="delete-item-btn--${item.firebaseKey}">Delete Item</i>
       </div>
     </div>
+    <div>
+    <button class="btn btn-primary btn-lg mb-4" id="payment-btn--${orderId}">Go To Payment</button>;</div>
     `;
   });
   renderToDOM('#store', domString);
