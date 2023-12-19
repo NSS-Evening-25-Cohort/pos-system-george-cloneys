@@ -46,7 +46,8 @@ const domEvents = () => {
     }
 
     if (e.target.id.includes('close-order-btn')) {
-      closeOrderForm();
+      const [, orderId] = e.target.id.split('--');
+      closeOrderForm(orderId);
     }
 
     if (e.target.id.includes('edit-order-btn')) {

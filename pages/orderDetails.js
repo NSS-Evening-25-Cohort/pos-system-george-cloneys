@@ -15,10 +15,6 @@ const showItems = (array, orderId) => {
 
   renderToDOM('#add-item-button', btnString);
 
-  // const payString = `<button class="btn btn-primary btn-lg mb-4" id="close-order-btn--${orderId}">Add New Item</button>`;
-
-  // renderToDOM('#payment', payString);
-
   let domString = '';
   array.forEach((item) => {
     domString += `

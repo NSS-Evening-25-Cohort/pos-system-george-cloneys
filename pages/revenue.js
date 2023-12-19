@@ -3,11 +3,11 @@ import clearDom from '../utils/clearDom';
 
 const revenuePage = (items, tipAmount) => {
   // calculate total revenue
-  let totalRevenue = 0;
+  let totalRevenue = [];
   items.forEach((item) => {
     totalRevenue += item.item_price;
   });
-  totalRevenue += tipAmount;
+  totalRevenue += parseFloat(tipAmount);
   clearDom();
   const domString = `
   <div class="d-flex flex-column justify-content-center">
