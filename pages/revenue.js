@@ -5,7 +5,8 @@ const revenuePage = (items, tipAmount) => {
   // calculate total revenue
   let totalRevenue = [];
   items.forEach((item) => {
-    totalRevenue += item.item_price;
+    totalRevenue += parseFloat(item.item_price);
+    console.warn(totalRevenue, item.item_price);
   });
   totalRevenue += parseFloat(tipAmount);
   clearDom();
