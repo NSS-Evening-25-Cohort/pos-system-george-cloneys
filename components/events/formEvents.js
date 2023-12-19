@@ -4,6 +4,7 @@ import {
 } from '../../api/orderData';
 import { showOrders } from '../../pages/viewOrders';
 import { showItems } from '../../pages/orderDetails';
+import revenuePage from '../../pages/revenue';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
@@ -65,6 +66,20 @@ const formEvents = () => {
 
       updateItem(payload).then(() => {
         getOrderItems(orderId).then((items) => showItems(items, orderId));
+      });
+    }
+
+    if (e.target.id.includes('close-order-form')) {
+      const [, orderId] = e.target.id.split('--');
+      const tipAmount = document.querySelector('#tip-amount').value;
+      const payload = {
+        payment_type: document.querySelector('#payment-type').value,
+        tip_amount: tipAmount,
+        firebaseKey: orderId
+      };
+
+      editOrder(payload).then(() => {
+        getOrderItems(orderId).then((items) => revenuePage(items, tipAmount));
       });
     }
   });
