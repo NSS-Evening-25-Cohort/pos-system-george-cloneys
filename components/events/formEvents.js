@@ -16,6 +16,7 @@ const formEvents = () => {
         phoneNumber: document.querySelector('#phoneNumber').value,
         email: document.querySelector('#email').value,
         order_type: document.querySelector('input[name="flexRadioDefault"]:checked').value,
+        status: 'Open'
       };
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
@@ -72,17 +73,25 @@ const formEvents = () => {
 
     if (e.target.id.includes('close-order-form')) {
       const [, orderId] = e.target.id.split('--');
-      const tipAmount = document.querySelector('#tip-amount').value;
       const payload = {
         payment_type: document.querySelector('#payment-type').value,
-        tip_amount: tipAmount,
+        tip_amount: document.querySelector('#tip-amount').value,
+        status: 'Closed',
         firebaseKey: orderId
       };
 
       editOrder(payload).then(() => {
-        getOrderItems(orderId).then((items) => {
-          // updateRevenue();
-          revenuePage(items, tipAmount);
+        getOrders().then((orders) => {
+          // Map closed orders to an array of promises returned by the getOrderItems call.
+          const getOrderItemsPromises = orders
+            .filter((order) => order.status === 'Closed')
+            .map((order) => getOrderItems(order.firebaseKey)
+              .then((orderItems) => Promise.resolve({ ...order, items: orderItems })));
+
+          // Wait until all calls to database have completed
+          Promise.all(getOrderItemsPromises)
+            // Display the revenue page with the orders and their items
+            .then((ordersWithItems) => revenuePage(ordersWithItems));
         });
       });
     }
