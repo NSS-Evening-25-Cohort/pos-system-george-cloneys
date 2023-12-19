@@ -2,7 +2,7 @@ import {
   getOrders, getSingleOrder, getOrderItems
 } from '../../api/orderData';
 import addOrderForm from '../forms/createOrder';
-import { getSingleItem, getItem, deleteSingleItem } from '../../api/itemData';
+import { getSingleItem, deleteSingleItem } from '../../api/itemData';
 import { showItems } from '../../pages/orderDetails';
 import addItemForm from '../forms/addItemForm';
 import { showOrders } from '../../pages/viewOrders';
@@ -35,7 +35,18 @@ const domEvents = () => {
 
     // CLICK EVENT FOR view-revenue-btn3
     if (e.target.id.includes('view-revenue-btn3')) {
-      revenuePage();
+      getOrders().then((orders) => {
+        // Map closed orders to an array of promises returned by the getOrderItems call.
+        const getOrderItemsPromises = orders
+          .filter((order) => order.status === 'Closed')
+          .map((order) => getOrderItems(order.firebaseKey)
+            .then((orderItems) => Promise.resolve({ ...order, items: orderItems })));
+
+        // Wait until all calls to database have completed
+        Promise.all(getOrderItemsPromises)
+          // Display the revenue page with the orders and their items
+          .then((ordersWithItems) => revenuePage(ordersWithItems));
+      });
     }
     if (e.target.id.includes('home')) {
       homePage();
@@ -72,16 +83,16 @@ const domEvents = () => {
     if (e.target.id.includes('delete-item-btn')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to delete?')) {
-        const [, firebaseKey] = e.target.id.split('--');
+        const [, itemId, orderId] = e.target.id.split('--');
 
-        deleteSingleItem(firebaseKey).then(() => {
-          getItem().then(showItems);
+        deleteSingleItem(itemId).then(() => {
+          getOrderItems(orderId).then(showItems);
         });
       }
     }
     if (e.target.id.includes('order-details-btn')) {
-      const [, orderId] = e.target.id.split('--');
-      getOrderItems(orderId).then((items) => showItems(items, orderId));
+      const [, orderId, orderStatus] = e.target.id.split('--');
+      getOrderItems(orderId).then((items) => showItems(items, orderId, orderStatus));
     }
   });
 };
