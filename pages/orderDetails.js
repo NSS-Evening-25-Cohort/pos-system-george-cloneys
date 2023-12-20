@@ -31,7 +31,7 @@ const showItems = (array, orderId, orderStatus) => {
     orderTotal += parseFloat(item.item_price);
   });
 
-  let totalDomString = `<h1>Total: ${new Intl.NumberFormat('en-US', {
+  let totalDomString = `<h1 class="card-title2">Total: ${new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
   }).format(orderTotal)}</h1>`;

@@ -11,7 +11,7 @@ const emptyOrder = () => {
 const showOrders = (orders) => {
   clearDom();
 
-  const btnString = '<button class="btn btn-primary btn-lg mb-4" id="add-order-btn">Add New Order</button>';
+  const btnString = '<button class="nav-link" id="add-order-btn">Add New Order</button>';
 
   renderToDOM('#add-button', btnString);
 
