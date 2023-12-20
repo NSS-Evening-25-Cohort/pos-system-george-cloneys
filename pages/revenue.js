@@ -37,11 +37,11 @@ const revenuePage = (orders) => {
     style: 'currency',
     currency: 'USD'
   }).format(totalRevenue)}</h1></div>
-  <h6 class="card-title">DATE RANGE:</h6>
-  <h6 class="card-title">TOTAL TIPS: ${totalTips}</h6>
-  <h6 class="card-title">TOTAL CALL IN ORDERS: ${totalCallIns}</h6>
-  <h6 class="card-title">TOTAL WALK IN ORDERS: ${totalWalkIns}</h6>
-  <h6 class="card-title">PAYMENT TYPES: ${Array.from(new Set(paymentTypes)).join(', ')}</h6>
+  <h6 class="card-title1">DATE RANGE:</h6>
+  <h6 class="card-title1">TOTAL TIPS: ${totalTips}</h6>
+  <h6 class="card-title1">TOTAL CALL IN ORDERS: ${totalCallIns}</h6>
+  <h6 class="card-title1">TOTAL WALK IN ORDERS: ${totalWalkIns}</h6>
+  <h6 class="card-title1">PAYMENT TYPES: ${Array.from(new Set(paymentTypes)).join(', ')}</h6>
   
   `;
   // I need another TOTAL REVENUE H1/P1 : equaling to total revenue
