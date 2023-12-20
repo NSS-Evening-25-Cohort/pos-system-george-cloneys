@@ -5,7 +5,6 @@ import {
 import { showOrders } from '../../pages/viewOrders';
 import { showItems } from '../../pages/orderDetails';
 import revenuePage from '../../pages/revenue';
-// import updateRevenue from '../../api/closeOrder';
 
 const formEvents = () => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
