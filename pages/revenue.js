@@ -2,7 +2,6 @@ import renderToDOM from '../utils/renderToDom';
 import clearDom from '../utils/clearDom';
 
 const revenuePage = (orders) => {
-  // console.warn('revenue page orders:', orders);
   // calculate total revenue
   let totalRevenue = 0;
   let totalTips = 0;
@@ -10,10 +9,8 @@ const revenuePage = (orders) => {
   let totalCallIns = 0;
   const paymentTypes = [];
   orders.forEach((order) => {
-    // console.warn('order:', order);
     // loop over items
     order.items.forEach((item) => {
-      // console.warn('item', item);
       const parsedItemPrice = parseFloat(item.item_price);
       if (!Number.isNaN(parsedItemPrice)) {
         totalRevenue += parsedItemPrice;
@@ -44,7 +41,6 @@ const revenuePage = (orders) => {
   <h6 class="card-title">PAYMENT TYPES: ${Array.from(new Set(paymentTypes)).join(', ')}</h6>
   
   `;
-  // I need another TOTAL REVENUE H1/P1 : equaling to total revenue
   renderToDOM('#revenueContainer', domString);
 };
 
